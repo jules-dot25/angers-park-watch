@@ -14,7 +14,119 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      import_logs: {
+        Row: {
+          announcements_found: number
+          created_at: string
+          html_content: string | null
+          id: string
+          import_date: string
+          new_announcements: number
+          updated_announcements: number
+        }
+        Insert: {
+          announcements_found?: number
+          created_at?: string
+          html_content?: string | null
+          id?: string
+          import_date?: string
+          new_announcements?: number
+          updated_announcements?: number
+        }
+        Update: {
+          announcements_found?: number
+          created_at?: string
+          html_content?: string | null
+          id?: string
+          import_date?: string
+          new_announcements?: number
+          updated_announcements?: number
+        }
+        Relationships: []
+      }
+      parking_announcements: {
+        Row: {
+          address: string
+          created_at: string
+          first_published_at: string
+          id: string
+          is_active: boolean | null
+          last_seen_at: string
+          neighborhood: string
+          price: number
+          removed_at: string | null
+          repost_count: number | null
+          title: string
+          total_days_online: number | null
+          updated_at: string
+        }
+        Insert: {
+          address: string
+          created_at?: string
+          first_published_at?: string
+          id?: string
+          is_active?: boolean | null
+          last_seen_at?: string
+          neighborhood: string
+          price: number
+          removed_at?: string | null
+          repost_count?: number | null
+          title: string
+          total_days_online?: number | null
+          updated_at?: string
+        }
+        Update: {
+          address?: string
+          created_at?: string
+          first_published_at?: string
+          id?: string
+          is_active?: boolean | null
+          last_seen_at?: string
+          neighborhood?: string
+          price?: number
+          removed_at?: string | null
+          repost_count?: number | null
+          title?: string
+          total_days_online?: number | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      publication_periods: {
+        Row: {
+          announcement_id: string
+          created_at: string
+          days_online: number | null
+          id: string
+          published_at: string
+          removed_at: string | null
+        }
+        Insert: {
+          announcement_id: string
+          created_at?: string
+          days_online?: number | null
+          id?: string
+          published_at: string
+          removed_at?: string | null
+        }
+        Update: {
+          announcement_id?: string
+          created_at?: string
+          days_online?: number | null
+          id?: string
+          published_at?: string
+          removed_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "publication_periods_announcement_id_fkey"
+            columns: ["announcement_id"]
+            isOneToOne: false
+            referencedRelation: "parking_announcements"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
