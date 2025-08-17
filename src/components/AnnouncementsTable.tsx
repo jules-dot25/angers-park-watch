@@ -85,8 +85,8 @@ export const AnnouncementsTable = ({ refreshTrigger }: AnnouncementsTableProps) 
     }
   };
 
-  const getRepostBadge = (repostCount: number) => {
-    if (repostCount > 0) {
+  const getRepostBadge = (repostCount: number | null) => {
+    if (repostCount && repostCount > 0) {
       return <Badge className="status-repost">{repostCount} repost{repostCount > 1 ? 's' : ''}</Badge>;
     }
     return null;

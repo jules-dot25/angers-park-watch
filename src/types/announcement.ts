@@ -6,10 +6,10 @@ export interface ParkingAnnouncement {
   price: number;
   first_published_at: string;
   last_seen_at: string;
-  removed_at?: string;
-  total_days_online: number;
-  repost_count: number;
-  is_active: boolean;
+  removed_at: string | null;
+  total_days_online: number | null;
+  repost_count: number | null;
+  is_active: boolean | null;
   created_at: string;
   updated_at: string;
 }
@@ -18,8 +18,8 @@ export interface PublicationPeriod {
   id: string;
   announcement_id: string;
   published_at: string;
-  removed_at?: string;
-  days_online: number;
+  removed_at: string | null;
+  days_online: number | null;
   created_at: string;
 }
 
@@ -29,7 +29,7 @@ export interface ImportLog {
   announcements_found: number;
   new_announcements: number;
   updated_announcements: number;
-  html_content?: string;
+  html_content: string | null;
   created_at: string;
 }
 

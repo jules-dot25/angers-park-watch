@@ -50,7 +50,7 @@ export const ImportSection = ({ onImportComplete }: ImportSectionProps) => {
               .update({
                 is_active: true,
                 last_seen_at: new Date().toISOString(),
-                repost_count: existing.repost_count + 1,
+                repost_count: (existing.repost_count || 0) + 1,
                 removed_at: null
               })
               .eq('id', existing.id);
